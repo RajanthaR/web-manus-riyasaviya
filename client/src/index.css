@@ -43,15 +43,17 @@
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
+  --primary: oklch(0.45 0.15 145);
+  --primary-foreground: oklch(0.98 0.005 145);
+  --sidebar-primary: oklch(0.45 0.15 145);
+  --sidebar-primary-foreground: oklch(0.98 0.005 145);
+  --chart-1: oklch(0.45 0.15 145);
+  --chart-2: oklch(0.55 0.18 40);
+  --chart-3: oklch(0.55 0.15 250);
+  --chart-4: oklch(0.65 0.15 80);
+  --chart-5: oklch(0.5 0.18 320);
+  --accent: oklch(0.55 0.18 40);
+  --accent-foreground: oklch(0.98 0.005 40);
   --radius: 0.65rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.235 0.015 65);
@@ -119,6 +121,13 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Noto Sans Sinhala', 'Inter', system-ui, sans-serif;
+  }
+  
+  /* Sinhala text optimization */
+  .sinhala-text {
+    font-feature-settings: "kern" 1, "liga" 1;
+    line-height: 1.8;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -174,4 +183,44 @@
       max-width: 1280px; /* Standard content width */
     }
   }
+}
+
+/* Price evaluation badges */
+.badge-good-deal {
+  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+}
+
+.badge-fair-price {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200;
+}
+
+.badge-overpriced {
+  @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200;
+}
+
+/* Reliability score colors */
+.reliability-high {
+  @apply text-green-600 dark:text-green-400;
+}
+
+.reliability-medium {
+  @apply text-yellow-600 dark:text-yellow-400;
+}
+
+.reliability-low {
+  @apply text-red-600 dark:text-red-400;
+}
+
+/* Chat bubble styles */
+.chat-bubble-user {
+  @apply bg-primary text-primary-foreground rounded-2xl rounded-br-sm;
+}
+
+.chat-bubble-assistant {
+  @apply bg-muted text-foreground rounded-2xl rounded-bl-sm;
+}
+
+/* Card hover effects */
+.vehicle-card {
+  @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
 }
